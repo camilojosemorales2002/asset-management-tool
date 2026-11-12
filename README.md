@@ -1,2 +1,3 @@
 # asset-management-tool
-Terminal institucional de Equity Research y valorización cuantitativa desarrollada en Python y Streamlit, con modelamiento DCF dinámico e integración de IA local.
+Terminal institucional de Equity Research y valorización cuantitativa desarrollada en Python y Streamlit, con modelamiento DCF dinámico e integración de IA local. // Institutional Equity Research & DCF Valuation terminal built with Python, Streamlit, Plotly, and local AI integration.
+
