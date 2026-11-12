@@ -51,4 +51,5 @@ Este dashboard no es simplemente un visualizador de datos estático, sino una he
 1. Clonar el repositorio e instalar dependencias:
    ```bash
    pip install -r requirements.txt
-2. streamlit run app.py
+2. copiar y pegar esto en terminal " streamlit run app.py "
+3. 
