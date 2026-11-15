@@ -1,55 +1,178 @@
-# Institutional Equity Research & Valuation Terminal
+# Terminal de Equity Research — Chile y Mercados Globales
 
-Plataforma cuantitativa y terminal fintech desarrollada en Python y Streamlit, diseñada para automatizar el análisis fundamental de activos financieros (acciones del IPSA chileno, renta variable internacional, bonos y proxies de renta fija), modelamiento dinámico de Flujo de Caja Descontado (DCF) y síntesis automatizada de tesis de inversión mediante Inteligencia Artificial Local (Ollama / Llama 3).
+Aplicación web en Python y Streamlit para analizar y valorizar el mercado chileno en su contexto global. Reúne las acciones del IPSA por sector, bancos chilenos e internacionales, pares globales de cobre y litio, ETFs, variables macro globales e indicadores del Banco Central de Chile. Cada tipo de activo usa el método de valorización que le corresponde.
 
----
+**🔗 Demo en vivo:** [LINK_A_TU_APP.streamlit.app](https://LINK_A_TU_APP.streamlit.app)
 
-## Vista Previa de la Interfaz (Dark Mode Corporativo)
-
-### 1. Resumen Financiero y Perfil de Mercado (Vista General)
-El terminal integra métricas corporativas clave en tiempo real, barras laterales con selectores limpios estructurados por categorías de activos y gráficos interactivos de alta precisión en azul neón.
-> ![Dashboard Preview 1](dashboard-preview1.png)
-
-### 2. Modelo DCF Interactivo (Valorización por Flujos de Caja)
-Permite realizar escenarios de sensibilidad ajustando dinámicamente el WACC, la tasa terminal (g), el crecimiento de ingresos (CAGR) y el margen operativo para calcular el valor empresa (EV) y el precio objetivo por acción.
-> ![Dashboard Preview 2](dashboard-preview2.png)
-
-### 3. Generación de Research Automatizado (IA Local)
-Módulo especializado que sintetiza los fundamentos de la compañía y calcula matrices de riesgo institucional ejecutándose de manera privada y offline mediante modelos de lenguaje locales.
-> ![Dashboard Preview 3](dashboard-preview3.png)
+![Vista general](capturas/resumen.png)
 
 ---
 
-## Stack Tecnológico y Arquitectura
-- Lenguaje: Python 3.10+
-- Interfaz Web: Streamlit (Optimizada para Layout Wide y modo oscuro corporativo).
-- Procesamiento Cuantitativo: Pandas, NumPy.
-- Motores de Datos Financieros: yfinance (Yahoo Finance API en tiempo real).
-- Visualización Avanzada: Plotly (Gráficos interactivos responsivos).
-- IA y Procesamiento de Lenguaje Natural: Ollama (Llama 3 ejecutado en Edge / Localhost).
+## ¿Qué problema resuelve?
+
+Analizar una acción chilena normalmente exige combinar varias fuentes: el precio en una plataforma, los estados financieros en otra, los múltiplos de la competencia en una tercera, el cobre y el dólar en otra más, y la valorización en Excel. Esta terminal reúne todo en una sola vista y permite responder preguntas como:
+
+- ¿Cuánto vale SQM según un DCF, y qué tan sensible es ese valor al WACC?
+- ¿Banco de Chile transa caro o barato frente a BCI, Santander e Itaú, considerando su ROE?
+- ¿Qué ROE está descontando el mercado en el precio actual de un banco?
+- ¿Qué tan correlacionada está SQM con el litio, y cómo ha cambiado esa relación en el último año?
+- ¿La política monetaria del Banco Central es hoy contractiva o expansiva (TPM vs. inflación)?
+- ¿Cómo afectan el cobre, China y las tasas de EE.UU. al IPSA y al peso chileno?
 
 ---
 
-## Insights de Valor y Ventajas Competitivas del Modelo
+## Universo de activos
 
-Este dashboard no es simplemente un visualizador de datos estático, sino una herramienta de Front Office diseñada bajo estándares institucionales que aporta los siguientes insights de valor:
-
-1. Gestión de Datos Multi-Activo Categorizada:
-   - Agrupa con sufijos de moneda explícitos activos locales (SQM, Banco de Chile, BCI, Cencosud, etc.), benchmarks internacionales (Apple, Nvidia, Microsoft), instrumentos de renta fija global y tasas de corto plazo (proxies de Depósitos a Plazo / DAP).
-2. Modelamiento DCF Dinámico y Riguroso:
-   - Implementa el Gordon Growth Model acoplado a un horizonte de proyección ajustable (3 a 10 años), calculando de forma automatizada el valor presente de los flujos de caja libres (FCFF), el valor terminal descontado y el diferencial porcentual de retorno frente al precio de mercado actual.
-3. Privacidad y Computación Edge (IA Local):
-   - Al integrar Ollama, el sistema redacta tesis de inversión y matrices de riesgo institucional de manera 100% offline. Esto elimina la dependencia de APIs pagadas en la nube, garantizando confidencialidad de datos y demostrando dominio avanzado en despliegue de modelos locales (Edge LLMs).
-4. Diseño Visual de Alta Gama (Business Dark Mode):
-   - Interfaz optimizada para mitigar la fatiga visual en largas jornadas de análisis bursátil, cuidando el contraste estricto (fondo oscuro corporativo con tipografía blanca y menús desplegables estilizados) y evitando truncamientos numéricos para asegurar un estándar profesional impecable.
+| Categoría | Activos |
+|---|---|
+| **Chile · Bancos y financieras** | Banco de Chile, BCI, Santander Chile, Itaú Chile, Bicecorp (BICE + Security), ILC |
+| **Chile · Minería, química y forestal** | SQM-B, CAP, CMPC |
+| **Chile · Energía y servicios básicos** | Copec, Enel Chile, Enel Américas, Colbún, Engie, Aguas Andinas, IAM |
+| **Chile · Consumo y retail** | Falabella, Cencosud, Ripley, SMU, CCU, Andina, Concha y Toro |
+| **Chile · Inmobiliario y construcción** | Parque Arauco, Mallplaza, Cencosud Shopping, SalfaCorp |
+| **Chile · Transporte, telecom y holdings** | LATAM, Vapores, Entel, Quiñenco |
+| **Bancos internacionales** | JPMorgan, Bank of America, Citigroup, Itaú Unibanco, Santander España, Credicorp |
+| **Pares globales: cobre y litio** | Freeport-McMoRan, Southern Copper, Teck, Albemarle |
+| **Acciones internacionales** | Apple, Microsoft, Nvidia, Amazon, Alphabet, Meta, Tesla |
+| **ETFs** | Chile (ECH), Latinoamérica, Emergentes, S&P 500, Nasdaq, cobre, litio, oro, bonos del Tesoro, bonos emergentes, T-Bills |
+| **Macro global** | IPSA, S&P 500, Bovespa, Shanghai, USD/CLP, USD/BRL, USD/CNY, cobre, WTI, Brent, oro, tasas EE.UU. 3m y 10a, DXY, VIX |
+| **Indicadores Chile (Banco Central)** | UF, dólar observado, euro, cobre, IPC, IMACEC, TPM, desempleo |
 
 ---
 
+## Módulos de análisis
 
+### 1. Resumen: rentabilidad, riesgo, técnico y fundamentales
 
-## Ejecución Local
-1. Clonar el repositorio e instalar dependencias:
-   ```bash
-   pip install -r requirements.txt
-2. copiar y pegar esto en terminal " streamlit run app.py "
-   
+Para cualquier activo:
+
+- **Rentabilidad y riesgo**: retornos a 1 mes, 3 meses, año a la fecha y 1 año; volatilidad anualizada y máxima caída.
+- **Técnico**: medias móviles de 50 y 200 días, RSI de 14 días, tendencia y distancia al máximo de 52 semanas.
+- **Fundamentales** (acciones y bancos): PER, P/B, ROE, dividend yield, margen EBITDA y endeudamiento.
+
+### 2. Valorización DCF (empresas)
+
+![Modelo DCF](capturas/dcf.png)
+
+Proyecta el flujo de caja libre, lo descuenta al WACC y agrega un valor terminal con crecimiento a perpetuidad (modelo de Gordon):
+
+```
+EV = Σ FCFₜ / (1 + WACC)ᵗ  +  [FCFₙ × (1 + g) / (WACC − g)] / (1 + WACC)ⁿ
+Valor patrimonio = EV − Deuda neta
+Precio objetivo = Valor patrimonio / Acciones en circulación × Tipo de cambio
+```
+
+- **Deuda neta** (deuda financiera menos caja) precargada desde los estados financieros y editable.
+- **Conversión de moneda automática**: SQM, CAP y LATAM, por ejemplo, reportan en USD pero cotizan en CLP.
+- **Tabla de sensibilidad** del precio objetivo ante cambios en WACC y g.
+- Muestra qué porcentaje del EV viene del valor terminal, y el múltiplo EV/FCF implícito.
+- Avisa cuando el flujo de caja libre es negativo y el DCF deja de ser confiable.
+
+### 3. Valorización bancaria (P/B justificado)
+
+![Valorización bancaria](capturas/bancos.png)
+
+En un banco la deuda es materia prima del negocio y no una fuente de financiamiento, así que el DCF tradicional no aplica. Se usa el múltiplo Precio / Valor libro justificado:
+
+```
+P/B justo = (ROE − g) / (Ke − g)
+Precio objetivo = P/B justo × Valor libro por acción
+ROE implícito = g + P/B de mercado × (Ke − g)
+```
+
+- Si el ROE supera al costo del patrimonio (Ke), el banco crea valor y merece transar sobre su valor libro.
+- El **ROE implícito** muestra qué rentabilidad sostenida está descontando el mercado en el precio actual.
+- Incluye una tabla de sensibilidad ROE × Ke.
+
+### 4. Comparables del sector
+
+![Comparables](capturas/comparables.png)
+
+Tabla de múltiplos (PER, P/B, ROE, dividend yield, margen EBITDA, capitalización y retorno a 1 año) de todas las empresas del mismo grupo. Destaca la empresa analizada, calcula su diferencia contra la mediana del sector y grafica **ROE vs. P/B** para identificar empresas caras o baratas en relación con su rentabilidad.
+
+### 5. Dividendos
+
+Historial de dividendos por acción de los últimos 10 años y dividend yield de los últimos 12 meses. Es especialmente relevante en Chile, donde las sociedades anónimas abiertas deben repartir al menos el 30% de su utilidad.
+
+### 6. Comparar y correlaciones
+
+![Comparación y correlaciones](capturas/correlaciones.png)
+
+- Desempeño relativo en **base 100** contra cualquier otro activo del universo.
+- **Matriz de correlación** de retornos diarios.
+- **Correlación móvil de 60 días**, que muestra cómo cambia la relación en el tiempo (por ejemplo, SQM vs. litio o IPSA vs. cobre).
+
+Cada categoría trae comparaciones sugeridas: las mineras se comparan con el cobre, el dólar y el litio; los bancos, con sus pares; las eléctricas, con el petróleo y las tasas.
+
+### 7. Panel Chile (Banco Central)
+
+![Panel Chile](capturas/panel-chile.png)
+
+Series oficiales del Banco Central de Chile y del INE, obtenidas desde la API pública de [mindicador.cl](https://mindicador.cl):
+
+- Último dato y variación a 12 meses de UF, dólar, euro, cobre, IPC, IMACEC, TPM y desempleo.
+- **Inflación acumulada a 12 meses** calculada desde el IPC mensual.
+- **TPM vs. inflación y tasa real**: indica si la política monetaria es contractiva o expansiva.
+- **IMACEC vs. desempleo**: actividad económica y mercado laboral.
+
+### 8. Tesis de inversión con IA local (opcional)
+
+Si se ejecuta en local con [Ollama](https://ollama.com) y Llama 3, la app redacta un borrador de tesis a partir de los datos, la valorización calculada y el contexto macro de Chile, sin enviar información a APIs externas. En la versión web este módulo está desactivado.
+
+---
+
+## Tecnologías
+
+- **Python** · pandas · NumPy
+- **Streamlit**: interfaz web y despliegue en Streamlit Community Cloud
+- **yfinance**: precios, fundamentales y dividendos desde Yahoo Finance
+- **mindicador.cl**: indicadores del Banco Central de Chile (API pública, sin clave)
+- **Plotly**: gráficos interactivos
+- **Ollama / Llama 3**: IA local (opcional)
+
+---
+
+## Ejecución local
+
+```bash
+git clone https://github.com/camilojosemorales2002/NOMBRE_DEL_REPO.git
+cd NOMBRE_DEL_REPO
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Para activar la tesis con IA (opcional):
+
+```bash
+pip install ollama
+ollama pull llama3
+```
+
+---
+
+## Estructura
+
+```
+├── app.py                  # Aplicación completa
+├── requirements.txt        # Dependencias
+├── .streamlit/config.toml  # Tema oscuro
+└── capturas/               # Imágenes del README
+```
+
+---
+
+## Limitaciones
+
+- Los datos de Yahoo Finance pueden tener retraso, y algunos fundamentales de acciones chilenas no están disponibles (aparecen como N/A).
+- BancoEstado no cotiza en bolsa, por lo que no forma parte del universo. Banco Security se analiza a través de Bicecorp tras la fusión de ambos grupos.
+- El DCF es un modelo simplificado de una etapa de crecimiento, y el P/B justificado supone un ROE sostenible constante. Los supuestos por defecto son referenciales y deben ajustarse a cada empresa.
+- Herramienta con fines educativos y de análisis; no constituye recomendación de inversión.
+
+---
+
+## Autor
+
+**Camilo José Morales Carvajal**
+Licenciado en Ciencias de la Administración, Universidad Adolfo Ibáñez · Magíster en Estrategia y Gestión (en curso)
+
+[LinkedIn](https://www.linkedin.com/in/TU_URL) · [GitHub](https://github.com/camilojosemorales2002)
