@@ -4,7 +4,8 @@ Aplicación web en Python y Streamlit para analizar y valorizar el mercado chile
 
 **🔗 Demo en vivo:** [LINK_A_TU_APP.streamlit.app](https://LINK_A_TU_APP.streamlit.app)
 
-![Vista general](capturas/resumen.png)
+![Banco de Chile: resumen con medias móviles de 50 y 200 días](dashboard-preview1.png)
+<sub>Banco de Chile (CHILE.SN): retornos, volatilidad, máxima caída y tendencia con medias móviles de 50 y 200 días.</sub>
 
 ---
 
@@ -44,6 +45,9 @@ Analizar una acción chilena normalmente exige combinar varias fuentes: el preci
 
 ### 1. Resumen: rentabilidad, riesgo, técnico y fundamentales
 
+![Freeport-McMoRan: par global del cobre](dashboard-preview3.png)
+<sub>Freeport-McMoRan (FCX), par global del cobre para comparar con las mineras chilenas: +47,5% en un año con 48,6% de volatilidad.</sub>
+
 Para cualquier activo:
 
 - **Rentabilidad y riesgo**: retornos a 1 mes, 3 meses, año a la fecha y 1 año; volatilidad anualizada y máxima caída.
@@ -52,7 +56,7 @@ Para cualquier activo:
 
 ### 2. Valorización DCF (empresas)
 
-![Modelo DCF](capturas/dcf.png)
+![Valorización DCF con tabla de sensibilidad](dcf.png)
 
 Proyecta el flujo de caja libre, lo descuenta al WACC y agrega un valor terminal con crecimiento a perpetuidad (modelo de Gordon):
 
@@ -70,7 +74,7 @@ Precio objetivo = Valor patrimonio / Acciones en circulación × Tipo de cambio
 
 ### 3. Valorización bancaria (P/B justificado)
 
-![Valorización bancaria](capturas/bancos.png)
+![Valorización bancaria por P/B justificado](bancos.png)
 
 En un banco la deuda es materia prima del negocio y no una fuente de financiamiento, así que el DCF tradicional no aplica. Se usa el múltiplo Precio / Valor libro justificado:
 
@@ -86,7 +90,7 @@ ROE implícito = g + P/B de mercado × (Ke − g)
 
 ### 4. Comparables del sector
 
-![Comparables](capturas/comparables.png)
+![Comparables de bancos chilenos y gráfico ROE vs P/B](comparables.png)
 
 Tabla de múltiplos (PER, P/B, ROE, dividend yield, margen EBITDA, capitalización y retorno a 1 año) de todas las empresas del mismo grupo. Destaca la empresa analizada, calcula su diferencia contra la mediana del sector y grafica **ROE vs. P/B** para identificar empresas caras o baratas en relación con su rentabilidad.
 
@@ -94,19 +98,22 @@ Tabla de múltiplos (PER, P/B, ROE, dividend yield, margen EBITDA, capitalizaci�
 
 Historial de dividendos por acción de los últimos 10 años y dividend yield de los últimos 12 meses. Es especialmente relevante en Chile, donde las sociedades anónimas abiertas deben repartir al menos el 30% de su utilidad.
 
-### 6. Comparar y correlaciones
+### 6. ETFs, comparación y correlaciones
 
-![Comparación y correlaciones](capturas/correlaciones.png)
+![Nasdaq 100 (QQQ): ETF con medias móviles](dashboard-preview2.png)
+<sub>Nasdaq 100 (QQQ): los ETFs y las variables macro tienen su propio análisis de rentabilidad, riesgo y comparación.</sub>
 
 - Desempeño relativo en **base 100** contra cualquier otro activo del universo.
 - **Matriz de correlación** de retornos diarios.
 - **Correlación móvil de 60 días**, que muestra cómo cambia la relación en el tiempo (por ejemplo, SQM vs. litio o IPSA vs. cobre).
 
+![SQM vs IPSA, cobre, dólar y litio](correlaciones.png)
+
 Cada categoría trae comparaciones sugeridas: las mineras se comparan con el cobre, el dólar y el litio; los bancos, con sus pares; las eléctricas, con el petróleo y las tasas.
 
 ### 7. Panel Chile (Banco Central)
 
-![Panel Chile](capturas/panel-chile.png)
+![Panel macroeconómico de Chile](panel-chile.png)
 
 Series oficiales del Banco Central de Chile y del INE, obtenidas desde la API pública de [mindicador.cl](https://mindicador.cl):
 
@@ -156,7 +163,7 @@ ollama pull llama3
 ├── app.py                  # Aplicación completa
 ├── requirements.txt        # Dependencias
 ├── .streamlit/config.toml  # Tema oscuro
-└── capturas/               # Imágenes del README
+└── *.png                   # Capturas del README
 ```
 
 ---
